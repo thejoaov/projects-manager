@@ -5,7 +5,7 @@
   "description": "Adonisjs boilerplate for API server with pre-configured JWT",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently -k \"yarn start\" \"yarn redis\"",
+    "start": "concurrently -k \"yarn server\" \"yarn redis\"",
     "server": "node server.js",
     "redis": "node ace kue:listen",
     "test": "node ace test"
