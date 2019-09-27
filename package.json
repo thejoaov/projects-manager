@@ -5,7 +5,7 @@
   "description": "Adonisjs boilerplate for API server with pre-configured JWT",
   "main": "index.js",
   "scripts": {
-    "start": "(node server.js && node ace) & node ace kue:listen",
+    "start": "concurrently -k \"node server.js\" \"node ace kue:listen\"",
     "redis": "node ace kue:listen",
     "test": "node ace test"
   },
@@ -30,6 +30,7 @@
     "@adonisjs/redis": "^2.0.7",
     "@adonisjs/validator": "^5.0.6",
     "adonis-kue": "^5.0.1",
+    "concurrently": "^4.1.2",
     "moment": "^2.24.0",
     "pg": "^7.12.1",
     "raven": "^2.6.4"
