@@ -5,7 +5,6 @@
   "description": "Adonisjs boilerplate for API server with pre-configured JWT",
   "main": "index.js",
   "scripts": {
-    "prestart": "yarn add @adonisjs/cli",
     "start": "node server.js",
     "test": "node ace test"
   },
