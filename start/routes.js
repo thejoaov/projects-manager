@@ -12,6 +12,7 @@ Route.get('/files/:id', 'FileController.show')
 
 Route.group(() => {
   Route.get('/user', 'UserController.show')
+  Route.put('/users', 'UserController.update')
 
   Route.post('/files', 'FileController.store')
 

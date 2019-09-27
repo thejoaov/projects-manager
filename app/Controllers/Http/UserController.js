@@ -29,7 +29,14 @@ class UserController {
     return user
   }
 
-  async update({ request, auth }) {}
+  async update({ request, auth }) {
+    const user = await User.findOrFail(auth.user.id)
+    const data = request.only(['username', 'email', 'file_id'])
+    user.merge(data)
+    user.save()
+
+    return user
+  }
 }
 
 module.exports = UserController
