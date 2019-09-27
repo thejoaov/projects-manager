@@ -21,18 +21,19 @@ module.exports = {
   | Redis connection to be used by default.
   |
   */
-  connection: Env.get('REDIS_URL', 'local'),
+  connection: Env.get('REDIS_URL', Env.get('NODE_ENV')),
 
   /*
   |--------------------------------------------------------------------------
-  | local connection config
+  | development connection config
   |--------------------------------------------------------------------------
   |
   | Configuration for a named connection.
   |
   */
-  local: {
+  development: {
     host: Env.get('REDIS_HOST', '127.0.0.1'),
+    user: Env.get('REDIS_USER', null),
     port: Env.get('REDIS_PORT', 6379),
     password: Env.get('REDIS_PASSWORD', null),
     database: Env.get('REDIS_DATABASE', 0),
@@ -62,5 +63,17 @@ module.exports = {
         db: 0,
       },
     ],
+  },
+
+  /*
+  |--------------------------------------------------------------------------
+  | Production config
+  |--------------------------------------------------------------------------
+  |
+  | Below is the configuration for the redis production.
+  |
+  */
+  production: {
+    url: Env.get('REDIS_URL'),
   },
 }
