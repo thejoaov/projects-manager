@@ -5,6 +5,7 @@
   "description": "Adonisjs boilerplate for API server with pre-configured JWT",
   "main": "index.js",
   "scripts": {
+    "poststart": "npx @adonisjs/cli migration:run",
     "start": "concurrently -k \"yarn server\" \"yarn redis\"",
     "server": "node server.js",
     "redis": "node ace kue:listen",

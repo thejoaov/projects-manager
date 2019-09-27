@@ -21,7 +21,7 @@ module.exports = {
   | Redis connection to be used by default.
   |
   */
-  connection: Env.get('NODE_ENV'),
+  connection: Env.get('REDIS_CONNECTION', 'development'),
   /*
   |--------------------------------------------------------------------------
   | production config
@@ -40,11 +40,8 @@ module.exports = {
   |
   */
   development: {
-    host: Env.get('REDIS_HOST', '127.0.0.1'),
-    user: Env.get('REDIS_USER', null),
+    host: Env.get('REDIS_HOST', '0.0.0.0'),
     port: Env.get('REDIS_PORT', 6379),
-    password: Env.get('REDIS_PASSWORD', null),
-    database: Env.get('REDIS_DATABASE', 0),
     keyPrefix: '',
   },
 

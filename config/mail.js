@@ -82,7 +82,23 @@ module.exports = {
     apiKey: Env.get('MAILGUN_API_KEY'),
     extras: {},
   },
-
+  /*
+  |--------------------------------------------------------------------------
+  | mailhog
+  |--------------------------------------------------------------------------
+  |
+  | Here we define configuration for mailhog. Extra options can be defined
+  | inside the `extra` object.
+  |
+  | https://github.com/mailhog/MailHog
+  |
+  */
+  mailhog: {
+    driver: 'smtp',
+    host: Env.get('MAILHOG_HOST'),
+    port: Env.get('MAILHOG_PORT', 1025),
+    auth: null,
+  },
   /*
   |--------------------------------------------------------------------------
   | Ethereal
