@@ -16,7 +16,7 @@ module.exports = {
   | interacting with SQL databases.
   |
   */
-  connection: Env.get('DB_CONNECTION', Env.get('NODE_ENV')),
+  connection: Env.get('DB_CONNECTION', 'DATABASE_URL', 'sqlite'),
 
   /*
   |--------------------------------------------------------------------------
@@ -64,46 +64,6 @@ module.exports = {
 
   /*
   |--------------------------------------------------------------------------
-  | Production (PG)
-  |--------------------------------------------------------------------------
-  |
-  | Here we define connection settings for Production (PG) database.
-  |
-  | npm i --save pg
-  |
-  */
-  production: {
-    client: 'pg',
-    connection: {
-      host: Env.get('DATABASE_URL'),
-    },
-    debug: Env.get('DB_DEBUG', false),
-  },
-
-  /*
-  |--------------------------------------------------------------------------
-  | Development
-  |--------------------------------------------------------------------------
-  |
-  | Here we define connection settings for Development database.
-  |
-  | npm i --save pg
-  |
-  */
-  development: {
-    client: 'pg',
-    connection: {
-      host: Env.get('DB_HOST', 'localhost'),
-      port: Env.get('DB_PORT', ''),
-      user: Env.get('DB_USER', 'root'),
-      password: Env.get('DB_PASSWORD', ''),
-      database: Env.get('DB_DATABASE', 'adonis'),
-    },
-    debug: Env.get('DB_DEBUG', false),
-  },
-
-  /*
-  |--------------------------------------------------------------------------
   | PostgreSQL
   |--------------------------------------------------------------------------
   |
@@ -120,6 +80,7 @@ module.exports = {
       user: Env.get('DB_USER', 'root'),
       password: Env.get('DB_PASSWORD', ''),
       database: Env.get('DB_DATABASE', 'adonis'),
+      ssl: true,
     },
     debug: Env.get('DB_DEBUG', false),
   },
