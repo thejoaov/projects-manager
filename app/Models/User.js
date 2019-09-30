@@ -29,10 +29,6 @@ class User extends Model {
   tasks() {
     return this.hasMany('App/Models/Task')
   }
-
-  file() {
-    return this.belongsTo('App/Models/File')
-  }
 }
 
 module.exports = User

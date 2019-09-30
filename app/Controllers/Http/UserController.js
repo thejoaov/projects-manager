@@ -5,7 +5,7 @@ const User = use('App/Models/User')
 
 class UserController {
   async store({ request, response }) {
-    const data = request.only(['username', 'email', 'password', 'file_id'])
+    const data = request.only(['username', 'email', 'password'])
     const adresses = request.input('addresses')
 
     const trx = await Database.beginTransaction()
@@ -14,8 +14,6 @@ class UserController {
 
     await user.addresses().createMany(adresses, trx)
 
-    await user.load('file', trx)
-
     await trx.commit()
 
     return user
@@ -23,7 +21,6 @@ class UserController {
 
   async show({ auth }) {
     const user = await User.findOrFail(auth.user.id)
-    await user.load('file')
     await user.load('projects.tasks')
 
     return user
@@ -31,7 +28,7 @@ class UserController {
 
   async update({ request, auth }) {
     const user = await User.findOrFail(auth.user.id)
-    const data = request.only(['username', 'email', 'file_id'])
+    const data = request.only(['username', 'email'])
     user.merge(data)
     user.save()
 
