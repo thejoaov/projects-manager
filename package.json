@@ -5,10 +5,9 @@
   "description": "Adonisjs boilerplate for API server with pre-configured JWT",
   "main": "index.js",
   "scripts": {
-    "poststart": "npx @adonisjs/cli migration:run",
     "start": "concurrently -k \"yarn server\" \"yarn redis\"",
-    "server": "node server.js",
-    "redis": "node ace kue:listen",
+    "server": "nodemon server.js",
+    "redis": "nodemon ace kue:listen",
     "test": "node ace test"
   },
   "keywords": [
@@ -44,6 +43,7 @@
     "eslint-plugin-node": "^10.0.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
+    "nodemon": "^1.19.4",
     "prettier": "^1.18.2"
   },
   "autoload": {

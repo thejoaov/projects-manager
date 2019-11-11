@@ -2,81 +2,34 @@ version: '3'
 
 services:
   postgres:
-    image: postgres:alpine
+    container_name: projects-manager-postgres
+    image: postgres:11.5-alpine
     ports:
       - '5432:5432'
     environment:
-      - HOST=0.0.0.0
-      - PORT=3333
-      - APP_URL=http://${HOST}:${PORT}
-      - APP_NAME=Projectfy
-      - DB_HOST=postgres
-      - DB_CONNECTION=pg
-      - DB_PORT=5432
-      - DB_USER=root
-      - DB_DATABASE=adonis
-      - REDIS_CONNECTION=development
-      - REDIS_HOST=redis
-      - REDIS_PORT=6379
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_DATABASE}
     volumes:
       - postgres_data:/var/lib/postgresql/data
-    depends_on:
-      - redis
 
   redis:
+    container_name: projects-manager-redis
     image: redis:alpine
-
-  app:
-    build: .
     ports:
-      - '3333:3333'
-    command: 'adonis serve --dev'
-    environment:
-      - HOST=0.0.0.0
-      - PORT=3333
-      - APP_URL=http://${HOST}:${PORT}
-      - APP_NAME=Projectfy
-      - DB_HOST=postgres
-      - DB_CONNECTION=pg
-      - DB_PORT=5432
-      - DB_USER=root
-      - DB_DATABASE=adonis
-      - MAIL_CONNECTION=mailhog
-      - MAILHOG_HOST=localhost
-      - MAILHOG_PORT=1025
-      - REDIS_CONNECTION=development
-      - REDIS_HOST=redis
-      - REDIS_PORT=6379
-    volumes:
-      - '.:/usr/app'
-    depends_on:
-      - postgres
-  queue:
-    build: .
-    command: yarn redis
-    environment:
-      - HOST=0.0.0.0
-      - PORT=3333
-      - APP_URL=http://${HOST}:${PORT}
-      - APP_NAME=Projectfy
-      - DB_HOST=postgres
-      - MAIL_CONNECTION=mailhog
-      - MAILHOG_HOST=localhost
-      - MAILHOG_PORT=1025
-      - REDIS_CONNECTION=development
-      - REDIS_HOST=redis
-      - REDIS_PORT=6379
-    restart: on-failure
-    depends_on:
-      - app
+      - '6379:6379'
 
-    volumes:
-      - '.:/usr/app'
+  mongo:
+    container_name: projects-manager-mongo
+    image: mongo
+    ports:
+      - '27017:27017'
 
   mailhog:
+    container_name: projects-manager-mailhog
     image: mailhog/mailhog
     ports:
-      - 8025:8025
+      - '8025:8025'
 
 volumes:
   postgres_data:
