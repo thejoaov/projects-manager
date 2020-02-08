@@ -1,6 +1,7 @@
 "use strict";
-
+/** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
 const Task = use("App/Models/Task");
+const User = use("App/Models/User");
 
 /**
  * Resourceful controller for interacting with tasks
@@ -42,12 +43,13 @@ class TaskController {
 	 * Update task details.
 	 * PUT or PATCH tasks/:id
 	 */
-	async update({ params, request }) {
+	async update({ params, request, auth }) {
 		const task = await Task.findOrFail(params.id);
+		const { id } = await User.findOrFail(auth.user.id);
 
-		const data = request.only(["user_id", "title", "description", "due_date", "file_id"]);
+		const data = request.only(["title", "description", "due_date", "file_id"]);
 
-		task.merge(data);
+		task.merge({ ...data, user_id: id });
 
 		task.save();
 
