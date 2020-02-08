@@ -68,6 +68,6 @@
 		}
 	},
 	"lint-staged": {
-		"*.js": "eslint --fix"
+		"*.js": "yarn prettify && eslint --fix && git add ."
 	}
 }
