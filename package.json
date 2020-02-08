@@ -5,7 +5,7 @@
 	"description": "Adonisjs boilerplate for API server with pre-configured JWT",
 	"main": "index.js",
 	"scripts": {
-		"prestart": "yarn && yarn migrate",
+		"prestart": "yarn migrate",
 		"start": "node server.js",
 		"predev": "yarn && yarn prettify && yarn docker:dev:down && yarn docker:dev:up && yarn migrate",
 		"migrate": "node ace migration:run --force",
