@@ -25,8 +25,8 @@ module.exports = {
 	smtp: {
 		driver: "smtp",
 		pool: true,
-		host: Env.get("MAIL_HOST"),
-		port: Env.get("MAIL_PORT"),
+		host: Env.get("MAIL_HOST", "localhost"),
+		port: Env.get("MAIL_PORT", 1025),
 		// secure: false,
 		auth: {
 			user: Env.get("MAIL_USERNAME"),
