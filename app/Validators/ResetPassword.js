@@ -1,22 +1,22 @@
-'use strict'
-const Antl = use('Antl')
+"use strict";
+const Antl = use("Antl");
 
 class ResetPassword {
-  get validateAll() {
-    return true
-  }
+	get validateAll() {
+		return true;
+	}
 
-  get rules() {
-    return {
-      // validation rules
-      token: 'required',
-      password: 'required|confirmed',
-    }
-  }
+	get rules() {
+		return {
+			// validation rules
+			token: "required",
+			password: "required|confirmed",
+		};
+	}
 
-  get messages() {
-    return Antl.list('validation')
-  }
+	get messages() {
+		return Antl.list("validation");
+	}
 }
 
-module.exports = ResetPassword
+module.exports = ResetPassword;

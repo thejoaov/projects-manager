@@ -1,0 +1,20 @@
+{
+  "sqltools.connections": [
+    {
+      "database": "${workspaceFolder}/database/development.sqlite",
+      "dialect": "SQLite",
+      "name": "k"
+    },
+    {
+      "database": "${workspaceFolder}/database/development.sqlite",
+      "dialect": "SQLite",
+      "name": "jasjk"
+    },
+    {
+      "database": "${workspaceFolder}/database/development.sqlite",
+      "dialect": "SQLite",
+      "name": "asdsada"
+    }
+  ],
+  "sqltools.useNodeRuntime": true
+}

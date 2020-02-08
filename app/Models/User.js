@@ -1,34 +1,34 @@
-'use strict'
+"use strict";
 
-const Model = use('Model')
-const Hash = use('Hash')
+const Model = use("Model");
+const Hash = use("Hash");
 
 class User extends Model {
-  static boot() {
-    super.boot()
+	static boot() {
+		super.boot();
 
-    this.addHook('beforeSave', async userInstance => {
-      if (userInstance.dirty.password) {
-        userInstance.password = await Hash.make(userInstance.password)
-      }
-    })
-  }
+		this.addHook("beforeSave", async (userInstance) => {
+			if (userInstance.dirty.password) {
+				userInstance.password = await Hash.make(userInstance.password);
+			}
+		});
+	}
 
-  addresses() {
-    return this.hasMany('App/Models/UserAddress')
-  }
+	addresses() {
+		return this.hasMany("App/Models/Address");
+	}
 
-  tokens() {
-    return this.hasMany('App/Models/Token')
-  }
+	tokens() {
+		return this.hasMany("App/Models/Token");
+	}
 
-  projects() {
-    return this.hasMany('App/Models/Project')
-  }
+	projects() {
+		return this.hasMany("App/Models/Project");
+	}
 
-  tasks() {
-    return this.hasMany('App/Models/Task')
-  }
+	tasks() {
+		return this.hasMany("App/Models/Task");
+	}
 }
 
-module.exports = User
+module.exports = User;

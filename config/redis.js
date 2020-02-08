@@ -1,4 +1,4 @@
-'use strict'
+"use strict";
 
 /*
 |--------------------------------------------------------------------------
@@ -10,10 +10,10 @@
 |
 */
 
-const Env = use('Env')
+const Env = use("Env");
 
 module.exports = {
-  /*
+	/*
   |--------------------------------------------------------------------------
   | connection
   |--------------------------------------------------------------------------
@@ -21,8 +21,8 @@ module.exports = {
   | Redis connection to be used by default.
   |
   */
-  connection: Env.get('REDIS_CONNECTION', 'development'),
-  /*
+	connection: Env.get("REDIS_CONNECTION", "development"),
+	/*
   |--------------------------------------------------------------------------
   | production config
   |--------------------------------------------------------------------------
@@ -30,8 +30,8 @@ module.exports = {
   | Below is the configuration for the redis cluster.
   |
   */
-  production: Env.get('REDIS_URL'),
-  /*
+	production: Env.get("REDIS_URL"),
+	/*
   |--------------------------------------------------------------------------
   | local connection config
   |--------------------------------------------------------------------------
@@ -39,13 +39,13 @@ module.exports = {
   | Configuration for a named connection.
   |
   */
-  development: {
-    host: Env.get('REDIS_HOST', '0.0.0.0'),
-    port: Env.get('REDIS_PORT', 6379),
-    keyPrefix: '',
-  },
+	development: {
+		host: Env.get("REDIS_HOST", "0.0.0.0"),
+		port: Env.get("REDIS_PORT", 6379),
+		keyPrefix: "",
+	},
 
-  /*
+	/*
   |--------------------------------------------------------------------------
   | cluster config
   |--------------------------------------------------------------------------
@@ -53,20 +53,20 @@ module.exports = {
   | Below is the configuration for the redis cluster.
   |
   */
-  cluster: {
-    clusters: [
-      {
-        host: '127.0.0.1',
-        port: 6379,
-        password: null,
-        db: 0,
-      },
-      {
-        host: '127.0.0.1',
-        port: 6380,
-        password: null,
-        db: 0,
-      },
-    ],
-  },
-}
+	cluster: {
+		clusters: [
+			{
+				host: "127.0.0.1",
+				port: 6379,
+				password: null,
+				db: 0,
+			},
+			{
+				host: "127.0.0.1",
+				port: 6380,
+				password: null,
+				db: 0,
+			},
+		],
+	},
+};

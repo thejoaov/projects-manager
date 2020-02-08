@@ -1,22 +1,22 @@
-'use strict'
-const Antl = use('Antl')
+"use strict";
+const Antl = use("Antl");
 
 class Session {
-  get validateAll() {
-    return true
-  }
+	get validateAll() {
+		return true;
+	}
 
-  get rules() {
-    return {
-      email: 'required|email',
-      password: 'required',
-      // validation rules
-    }
-  }
+	get rules() {
+		return {
+			email: "required|email",
+			password: "required",
+			// validation rules
+		};
+	}
 
-  get messages() {
-    return Antl.list('validation')
-  }
+	get messages() {
+		return Antl.list("validation");
+	}
 }
 
-module.exports = Session
+module.exports = Session;
