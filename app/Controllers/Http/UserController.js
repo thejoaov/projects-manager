@@ -5,7 +5,7 @@ const User = use("App/Models/User");
 
 class UserController {
 	async store({ request, response }) {
-		const data = request.only(["username", "email", "password"]);
+		const data = request.only(["username", "email", "password", "name"]);
 		const adresses = request.input("addresses");
 
 		const trx = await Database.beginTransaction();
@@ -22,6 +22,7 @@ class UserController {
 	async show({ auth }) {
 		const user = await User.findOrFail(auth.user.id);
 		await user.load("projects.tasks");
+		await user.load("addresses");
 
 		return user;
 	}
