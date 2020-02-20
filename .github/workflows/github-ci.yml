@@ -5,10 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Setup Node v${{ matrix.node-version }}
       - uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 10
       - name: Install dependencies
         run: npm i -g yarn @adonisjs/cli && yarn
       - name: Setup environment
