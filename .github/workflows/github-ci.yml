@@ -1,0 +1,26 @@
+name: Pmanage Adonis CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [10.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup Node v${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: npm i -g yarn @adonisjs/cli
+    - name: Install dependencies
+    - run: yarn install
+    - name: Setup environment
+    - run: cp .env.example .env && node ace key:generate
+    - name: Run tests
+    - run: yarn test
